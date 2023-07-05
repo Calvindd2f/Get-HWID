@@ -10,10 +10,10 @@ $adapters = Get-NetAdapter
 $memoryModules = Get-WmiObject Win32_PhysicalMemory
 ###[Power Supply]###
 #####################################################
-
+        
 $multiLine = @"
 $(Write-Host "Calvindd2f | Get-HWID")
-
+                                                               
 $( 
   Write-Host "System"
   Write-Host "======================================================================"
@@ -24,8 +24,8 @@ $(
   Write-Host "Enclosure Serial: Default string"
   Write-Host "Enclosure Asset Tag: Default string"
   )
-
-
+                          
+                                      
 $(foreach ($drive in $drives) {
     $(Write-Host "Disk (HDD/SSD/NVMe)")
     Write-Host "======================================================================"
@@ -33,7 +33,7 @@ $(foreach ($drive in $drives) {
     Write-Host ("Serial number: " + $drive.SerialNumber)
     Write-Host "----------------------------------------------------------------------"
 })
-
+                                        
 $(foreach ($adapter in $adapters) {
     $(write-host 'Network Adapter (NIC)')
     Write-Host "======================================================================"
@@ -43,7 +43,7 @@ $(foreach ($adapter in $adapters) {
     Write-Host "Permanent MAC: N/A"
     Write-Host "----------------------------------------------------------------------"
 })
-
+      
 $(foreach ($module in $memoryModules) {
     $(write-host 'Physical RAM')
     Write-Host "======================================================================"
@@ -52,9 +52,9 @@ $(foreach ($module in $memoryModules) {
     Write-Host ("Asset tag: " + $module.AssetTag)
     Write-Host "----------------------------------------------------------------------"
 })
-
-
-
+        
+    
+     
 $(
 Write-Host "Power Supply"
 Write-Host "======================================================================"
@@ -63,8 +63,8 @@ Write-Host "Model part number:       To Be Filled By O.E.M."
 Write-Host "Asset tag number:        To Be Filled By O.E.M."
 Write-Host "----------------------------------------------------------------------"
 )
-
+     
 Press any key to continue . . .
-
+     
 "@
 Write-Host $multiLine
