@@ -13,9 +13,9 @@ $memoryModules = Get-WmiObject Win32_PhysicalMemory
         
 $multiLine = @"
 $(Write-Host "Calvindd2f | Get-HWID")
-                                                               
+$(Write-Host " ")   
+$(Write-Host "System")
 $( 
-  Write-Host "System"
   Write-Host "======================================================================"
   Write-Host ("BIOS UUID: " + $system.UUID)
   Write-Host ("BIOS Serial: " + $bios.SerialNumber)
@@ -24,18 +24,17 @@ $(
   Write-Host "Enclosure Serial: Default string"
   Write-Host "Enclosure Asset Tag: Default string"
   )
-                          
-                                      
+  $(Write-Host " ")    
+  $(Write-Host "Disk (HDD/SSD/NVMe)")
 $(foreach ($drive in $drives) {
-    $(Write-Host "Disk (HDD/SSD/NVMe)")
     Write-Host "======================================================================"
     Write-Host ("Model: " + $drive.Model)
     Write-Host ("Serial number: " + $drive.SerialNumber)
     Write-Host "----------------------------------------------------------------------"
 })
-                                        
+$(Write-Host " ")  
+$(write-host 'Network Adapter (NIC)')
 $(foreach ($adapter in $adapters) {
-    $(write-host 'Network Adapter (NIC)')
     Write-Host "======================================================================"
     Write-Host ("Adapter: " + $adapter.Name)
     Write-Host ("Current MAC: " + $adapter.MacAddress)
@@ -43,18 +42,16 @@ $(foreach ($adapter in $adapters) {
     Write-Host "Permanent MAC: N/A"
     Write-Host "----------------------------------------------------------------------"
 })
-      
+$(Write-Host " ")  
+$(write-host 'Physical RAM')
 $(foreach ($module in $memoryModules) {
-    $(write-host 'Physical RAM')
     Write-Host "======================================================================"
     Write-Host ("Manufacturer: " + $module.Manufacturer)
     Write-Host ("Serial: " + $module.SerialNumber)
     Write-Host ("Asset tag: " + $module.AssetTag)
     Write-Host "----------------------------------------------------------------------"
 })
-        
-    
-     
+$(Write-Host " ")               
 $(
 Write-Host "Power Supply"
 Write-Host "======================================================================"
@@ -63,8 +60,8 @@ Write-Host "Model part number:       To Be Filled By O.E.M."
 Write-Host "Asset tag number:        To Be Filled By O.E.M."
 Write-Host "----------------------------------------------------------------------"
 )
-     
-Press any key to continue . . .
-     
+$(Write-Host " ")       
+$(Read-Host "Press any key to continue . . .")
+$(Write-Host " ")    
 "@
 Write-Host $multiLine
