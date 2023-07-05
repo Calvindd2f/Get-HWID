@@ -10,13 +10,12 @@ $adapters = Get-NetAdapter
 $memoryModules = Get-WmiObject Win32_PhysicalMemory
 ###[Power Supply]###
 #####################################################
-        
 $multiLine = @"
 $(Write-Host "Calvindd2f | Get-HWID")
 $(Write-Host " ")   
 $(Write-Host "System")
+$(Write-Host "======================================================================")
 $( 
-  Write-Host "======================================================================"
   Write-Host ("BIOS UUID: " + $system.UUID)
   Write-Host ("BIOS Serial: " + $bios.SerialNumber)
   Write-Host ("Baseboard Serial: " + $baseboard.SerialNumber)
@@ -26,16 +25,16 @@ $(
   )
   $(Write-Host " ")    
   $(Write-Host "Disk (HDD/SSD/NVMe)")
+  $(Write-Host "======================================================================")
 $(foreach ($drive in $drives) {
-    Write-Host "======================================================================"
     Write-Host ("Model: " + $drive.Model)
     Write-Host ("Serial number: " + $drive.SerialNumber)
     Write-Host "----------------------------------------------------------------------"
 })
 $(Write-Host " ")  
 $(write-host 'Network Adapter (NIC)')
+$(Write-Host "======================================================================")
 $(foreach ($adapter in $adapters) {
-    Write-Host "======================================================================"
     Write-Host ("Adapter: " + $adapter.Name)
     Write-Host ("Current MAC: " + $adapter.MacAddress)
     # Permanent MAC is typically not available in the default cmdlets
@@ -44,8 +43,8 @@ $(foreach ($adapter in $adapters) {
 })
 $(Write-Host " ")  
 $(write-host 'Physical RAM')
+$(Write-Host "======================================================================")
 $(foreach ($module in $memoryModules) {
-    Write-Host "======================================================================"
     Write-Host ("Manufacturer: " + $module.Manufacturer)
     Write-Host ("Serial: " + $module.SerialNumber)
     Write-Host ("Asset tag: " + $module.AssetTag)
