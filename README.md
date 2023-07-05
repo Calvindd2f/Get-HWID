@@ -1,6 +1,9 @@
 # Get-HWID  
 Enumerate Hardware Identifiers.  
 
+### Usage:
+`C:\ PS:> Get-HWID`
+
 ```text
 Calvindd2f | Get-HWID  
   
